@@ -13,6 +13,14 @@ Warm-up: constructing a frequency table.
 
 < frequencies  ∷  (Ord char) ⇒ [char] → [With Int char]
 
+> frequencies :: (Ord char) => [char] -> [With Int char]
+> frequencies [] = []
+> frequencies (c:cs) = add c $ frequencies cs
+>     where add c [] = [1 :- c]
+>           add c (w@(a :- b):ws)
+>               | c == b = ((a + 1) :- b):ws
+>               | otherwise = w : add c ws
+
 -------------------------------------------------------------------------------
 
 Constructing a Huffman tree.
