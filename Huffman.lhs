@@ -14,8 +14,7 @@ Warm-up: constructing a frequency table.
 < frequencies  ∷  (Ord char) ⇒ [char] → [With Int char]
 
 > frequencies :: (Ord char) => [char] -> [With Int char]
-> frequencies [] = []
-> frequencies (c:cs) = add c $ frequencies cs
+> frequencies = foldr add []
 >     where add c [] = [1 :- c]
 >           add c (w@(a :- b):ws)
 >               | c == b = ((a + 1) :- b):ws
