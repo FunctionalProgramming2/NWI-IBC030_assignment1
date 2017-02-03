@@ -6,6 +6,7 @@
 > import Satellite
 > import Tree
 
+author: Hendrik Werner s4549775
 -------------------------------------------------------------------------------
 
 Warm-up: constructing a frequency table.
