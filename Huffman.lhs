@@ -65,6 +65,16 @@ Decoding a Huffman binary.
 
 < decode ∷ Tree char → [Bit] → [char]
 
+> decode :: Tree char -> [Bit] -> [char]
+> decode t [] = []
+> decode t (b:bs) = dec [b] bs
+>     where dec c [] = [fromJust (fromBits code c)]
+>           dec c (b:bs)
+>               | isJust mc = fromJust mc : dec [b] bs
+>               | otherwise = dec (c ++ [b]) bs
+>               where mc = fromBits code c
+>           code = codes t
+
 > fromBits :: [(char, [Bit])] -> [Bit] -> Maybe char
 > fromBits [] _ = Nothing
 > fromBits ((c, bs):cs) bits
