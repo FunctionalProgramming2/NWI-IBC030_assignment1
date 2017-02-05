@@ -45,6 +45,12 @@ Encoding ASCII text.
 
 < encode ∷ (Eq char) ⇒ Tree char → [char] → [Bit]
 
+> encode :: (Eq char) => Tree char -> [char] -> [Bit]
+> encode t cs = concat $ map (bitCode (codes t)) cs
+>     where bitCode ((ch, bits):cds) c
+>               | ch == c = bits
+>               | otherwise = bitCode cds c
+
 < codes ∷ Tree char → [(char, [Bit])]
 
 > codes :: Tree char -> [(char, [Bit])]
