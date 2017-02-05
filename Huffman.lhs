@@ -47,6 +47,11 @@ Encoding ASCII text.
 
 < codes ∷ Tree char → [(char, [Bit])]
 
+> codes :: Tree char -> [(char, [Bit])]
+> codes t = cds [] t
+>     where cds bs (Leaf c) = [(c, bs)]
+>           cds bs (l :^: r) = cds (O:bs) l ++ cds (I:bs) r
+
 -------------------------------------------------------------------------------
 
 Decoding a Huffman binary.
