@@ -6,6 +6,7 @@
 > import Satellite
 > import Tree
 > import Data.List
+> import Data.Maybe
 
 author: Hendrik Werner s4549775
 -------------------------------------------------------------------------------
@@ -64,11 +65,11 @@ Decoding a Huffman binary.
 
 < decode ∷ Tree char → [Bit] → [char]
 
-> readChar :: Tree char -> [Bit] -> Maybe char
-> readChar (Leaf c) [] = Just c
-> readChar (l :^: r) (O:bs) = readChar l bs
-> readChar (l :^: r) (I:bs) = readChar r bs
-> readChar _ _ = Nothing
+> fromBits :: [(char, [Bit])] -> [Bit] -> Maybe char
+> fromBits [] _ = Nothing
+> fromBits ((c, bs):cs) bits
+>     | bs == bits = Just c
+>     | otherwise = fromBits cs bits
 
 -------------------------------------------------------------------------------
 
