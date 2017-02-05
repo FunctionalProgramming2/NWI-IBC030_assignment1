@@ -64,6 +64,12 @@ Decoding a Huffman binary.
 
 < decode ∷ Tree char → [Bit] → [char]
 
+> readChar :: Tree char -> [Bit] -> Maybe char
+> readChar (Leaf c) [] = Just c
+> readChar (l :^: r) (O:bs) = readChar l bs
+> readChar (l :^: r) (I:bs) = readChar r bs
+> readChar _ _ = Nothing
+
 -------------------------------------------------------------------------------
 
 Some test data.
