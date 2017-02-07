@@ -29,7 +29,7 @@ Constructing a Huffman tree.
 < huffman ∷ [With Int char] → Tree char
 
 > huffman :: [With Int char] -> Tree char
-> huffman w = snd $ reduce combine $ map leafify $ sort w
+> huffman = snd . reduce combine . map leafify . sort
 >     where combine (t1:t2:ts) = insert (merge t1 t2) ts
 >           leafify (a :- b) = (a :- Leaf b)
 >           merge (a1 :- b1) (a2 :- b2) = a2 + a2 :- b1 :^: b2
