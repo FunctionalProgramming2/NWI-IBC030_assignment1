@@ -56,7 +56,7 @@ Encoding ASCII text.
 
 > codes :: Tree char -> [(char, [Bit])]
 > codes t = cds [] t
->     where cds bs (Leaf c) = [(c, bs)]
+>     where cds bs (Leaf c) = [(c, reverse bs)]
 >           cds bs (l :^: r) = cds (O:bs) l ++ cds (I:bs) r
 
 -------------------------------------------------------------------------------
