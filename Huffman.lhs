@@ -11,6 +11,9 @@
 author: Hendrik Werner s4549775
 -------------------------------------------------------------------------------
 
+Exercise 1
+==========
+
 Warm-up: constructing a frequency table.
 
 < frequencies  ∷  (Ord char) ⇒ [char] → [With Int char]
@@ -23,6 +26,9 @@ Warm-up: constructing a frequency table.
 >               | otherwise = w : add c ws
 
 -------------------------------------------------------------------------------
+
+Exercise 2.1
+============
 
 Constructing a Huffman tree.
 
@@ -37,7 +43,13 @@ Constructing a Huffman tree.
 >           reduce f a = reduce f $ f a
 >           snd (a :- b) = b
 
+Exercise 2.2
+============
+
 -------------------------------------------------------------------------------
+
+Exercise 3.1
+============
 
 Encoding ASCII text.
 
@@ -60,6 +72,9 @@ Encoding ASCII text.
 >           cds bs (l :^: r) = cds (O:bs) l ++ cds (I:bs) r
 
 -------------------------------------------------------------------------------
+
+Exercise 4
+==========
 
 Decoding a Huffman binary.
 
