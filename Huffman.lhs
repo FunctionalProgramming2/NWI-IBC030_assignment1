@@ -46,6 +46,107 @@ Constructing a Huffman tree.
 Exercise 2.2
 ============
 
+I applied the huffman algorithm to the English letter frequencies from Wikipedia
+
+> englishFrequencies :: [(With Int Char)]
+> englishFrequencies = [
+>     (8167 :- 'a')
+>     ,(1492 :- 'b')
+>     ,(2782 :- 'c')
+>     ,(4253 :- 'd')
+>     ,(12702 :- 'e')
+>     ,(2228 :- 'f')
+>     ,(2015 :- 'g')
+>     ,(6094 :- 'h')
+>     ,(6966 :- 'i')
+>     ,(153 :- 'j')
+>     ,(772 :- 'k')
+>     ,(4025 :- 'l')
+>     ,(2406 :- 'm')
+>     ,(6749 :- 'n')
+>     ,(7507 :- 'o')
+>     ,(1929 :- 'p')
+>     ,(95 :- 'q')
+>     ,(5987 :- 'r')
+>     ,(6327 :- 's')
+>     ,(9056 :- 't')
+>     ,(2758 :- 'u')
+>     ,(978 :- 'v')
+>     ,(2360 :- 'w')
+>     ,(150 :- 'x')
+>     ,(1974 :- 'y')
+>     ,(74 :- 'z')]
+
+and got the following huffman tree
+
+((Leaf 't' :^: ((Leaf 'f' :^: Leaf 'w') :^: (Leaf 'm' :^: Leaf 'u'))) :^: (((Leaf 'c' :^: (Leaf 'v' :^: Leaf 'b')) :^: Leaf 'r') :^: (Leaf 'h' :^: Leaf 's'))) :^: ((Leaf 'e' :^: (Leaf 'n' :^: Leaf 'i')) :^: ((Leaf 'o' :^: (((((Leaf 'z' :^: Leaf 'q') :^: (Leaf 'x' :^: Leaf 'j')) :^: Leaf 'k') :^: Leaf 'p') :^: Leaf 'l')) :^: (Leaf 'a' :^: ((Leaf 'y' :^: Leaf 'g') :^: Leaf 'd'))))
+
+and the following letter codes
+
+[
+    ('t',[O,O,O]),
+    ('f',[O,O,I,O,O]),
+    ('w',[O,O,I,O,I]),
+    ('m',[O,O,I,I,O]),
+    ('u',[O,O,I,I,I]),
+    ('c',[O,I,O,O,O]),
+    ('v',[O,I,O,O,I,O]),
+    ('b',[O,I,O,O,I,I]),
+    ('r',[O,I,O,I]),
+    ('h',[O,I,I,O]),
+    ('s',[O,I,I,I]),
+    ('e',[I,O,O]),
+    ('n',[I,O,I,O]),
+    ('i',[I,O,I,I]),
+    ('o',[I,I,O,O]),
+    ('z',[I,I,O,I,O,O,O,O,O]),
+    ('q',[I,I,O,I,O,O,O,O,I]),
+    ('x',[I,I,O,I,O,O,O,I,O]),
+    ('j',[I,I,O,I,O,O,O,I,I]),
+    ('k',[I,I,O,I,O,O,I]),
+    ('p',[I,I,O,I,O,I]),
+    ('l',[I,I,O,I,I]),
+    ('a',[I,I,I,O]),
+    ('y',[I,I,I,I,O,O]),
+    ('g',[I,I,I,I,O,I]),
+    ('d',[I,I,I,I,I])
+]
+
+which I mapped to (Char, code length) pairs and mapped these to (With Int Char)
+and sorted them. I got back (almost, due to equal lengths) the original ranking.
+
+[
+    3 :- 't',
+    3 :- 'e',
+    4 :- 'r',
+    4 :- 'h',
+    4 :- 's',
+    4 :- 'n',
+    4 :- 'i',
+    4 :- 'o',
+    4 :- 'a',
+    5 :- 'f',
+    5 :- 'w',
+    5 :- 'm',
+    5 :- 'u',
+    5 :- 'c',
+    5 :- 'l',
+    5 :- 'd',
+    6 :- 'v',
+    6 :- 'b',
+    6 :- 'p',
+    6 :- 'y',
+    6 :- 'g',
+    7 :- 'k',
+    9 :- 'z',
+    9 :- 'q',
+    9 :- 'x',
+    9 :- 'j'
+]
+
+This confirms that the algorithms works and more common letters get shorter
+codes.
+
 -------------------------------------------------------------------------------
 
 Exercise 3.1
